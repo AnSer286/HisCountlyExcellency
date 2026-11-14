@@ -322,73 +322,84 @@ body {
    АДАПТИВ ПОД МОБИЛКИ
 ========================================= */
 @media (max-width: 768px) {
-    /* Заголовок и наклейка Мышкин */
-    .header {
-        padding: 20px 10px;
-    }
-    .gold-text {
-        font-size: 1.8rem;
-    }
-    .sticker-overlay {
-        top: 25px;
-        font-size: 2rem;
-        padding: 2px 15px;
-    }
+  /* 1. ФИКС ПРИВЕТСТВЕННОГО ЭКРАНА */
+  #splash-screen {
+    padding: 20px; /* Отступы по краям, чтобы открытка не прилипала */
+    box-sizing: border-box;
+    overflow: hidden; /* Запрещаем скролл */
+  }
+  .splash-content {
+    padding: 25px 15px;
+    width: 100%;
+    max-width: 320px; /* Ограничиваем ширину */
+    margin: 0 auto; /* Центрируем */
+    transform: rotate(
+      -1deg
+    ); /* Чуть-чуть оставляем наклона, но не мешаем читать */
+    box-sizing: border-box;
+  }
+  .splash-content h1 {
+    font-size: 1.5rem; /* Уменьшаем шрифт */
+    word-wrap: break-word;
+  }
+  #start-btn {
+    font-size: 1.5rem;
+    padding: 10px 25px;
+  }
 
-    /* Карусель */
-    .carousel-container {
-        padding: 10px;
-    }
-    .card {
-        padding: 15px 10px;
-        border-width: 4px;
-    }
-    .card-img {
-        max-height: 250px; /* Чтобы фото не занимало весь экран */
-        margin-bottom: 15px;
-    }
-    .card-text {
-        font-size: 1.1rem;
-    }
-    
-    /* Кнопки навигации */
-    .nav-btn {
-        font-size: 1.2rem;
-        padding: 8px 12px;
-    }
+  /* 2. ПРЯЧЕМ КНОПКИ КАРУСЕЛИ */
+  .nav-btn {
+    display: none !important; /* Убираем стрелки, оставляем только свайпы */
+  }
 
-    /* Экран приветствия */
-    .splash-content {
-        padding: 20px;
-        margin: 20px;
-        width: 90%;
-        transform: rotate(0deg); /* Убираем наклон на мобилках для читаемости */
-    }
-    .splash-content h1 {
-        font-size: 1.8rem;
-    }
-    #start-btn {
-        font-size: 1.5rem;
-        padding: 10px 30px;
-    }
+  /* Остальные элементы (заголовок, карточки, стикеры) */
+  .header {
+    padding: 15px 10px;
+  }
+  .gold-text {
+    font-size: 1.8rem;
+  }
+  .sticker-overlay {
+    top: 20px;
+    font-size: 2rem;
+    padding: 2px 15px;
+  }
 
-    /* Кнопка прощения */
-    #forgive-btn {
-        font-size: 1.5rem;
-        padding: 12px 25px;
-    }
+  .carousel-container {
+    padding: 10px 5px; /* Чуть больше места по бокам для карточек */
+  }
+  .card {
+    padding: 15px 10px;
+    border-width: 4px;
+  }
+  .card-img {
+    max-height: 250px;
+    margin-bottom: 15px;
+  }
+  .card-text {
+    font-size: 1.1rem;
+  }
 
-    /* Летающие стикеры */
-    .floating-sticker {
-        width: 70px; /* На телефоне они должны быть меньше */
-    }
-    
-    /* Убегающие кнопки */
-    .escape-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    #close-btn { right: 10px; top: 10px; }
-    #mute-btn { right: 60px; top: 10px; }
+  #forgive-btn {
+    font-size: 1.5rem;
+    padding: 12px 25px;
+  }
+
+  .floating-sticker {
+    width: 70px;
+  }
+
+  .escape-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  #close-btn {
+    right: 10px;
+    top: 10px;
+  }
+  #mute-btn {
+    right: 60px;
+    top: 10px;
+  }
 }
