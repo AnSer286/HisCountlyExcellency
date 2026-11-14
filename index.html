@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Его Графское Сиятельство</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪙</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Comic+Neue:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-vk-pattern">
+    <!-- Экран приветствия (Требует звук) -->
+    <div id="splash-screen">
+      <div class="splash-content">
+        <h1>ВКЛЮЧИТЕ ЗВУК,<br />ВАШЕ СИЯТЕЛЬСТВО!</h1>
+        <p>(это не просьба, это распоряжение хозяйки)</p>
+        <button id="start-btn">ОК</button>
+      </div>
+    </div>
+
+    <!-- Основной контент (скрыт до старта) -->
+    <div id="main-content">
+      <!-- Кнопка закрытия, которая будет убегать -->
+      <div id="close-btn" class="escape-btn">✖</div>
+
+      <!-- Убегающая кнопка звука -->
+      <div id="mute-btn" class="escape-btn">🔇</div>
+
+      <!-- Заголовок -->
+      <header class="header">
+        <h1 class="gold-text">ЕГО ГРАФСКОЕ СИЯТЕЛЬСТВО</h1>
+        <div class="sticker-overlay">Мышкин</div>
+      </header>
+
+      <!-- Карусель -->
+      <div class="carousel-container">
+        <div class="carousel" id="carousel">
+          <!-- Карточка 1: Достоевский -->
+          <div class="card">
+            <img src="img/hero.jpg" alt="Граф" class="card-img" />
+            <div class="card-text">
+              <p>
+                «Князь Мышкин был кроток, наивен и любил людей. Но у князя не
+                было 1164 часов волонтёрства и он не работал в Пятёрочке.»
+              </p>
+              <p>
+                    © Ф.М. Достоевский, "Идиот"
+              </p>
+            </div>
+          </div>
+
+          <!-- Карточка 2: Пятёрочка -->
+          <div class="card">
+            <img src="img/gallery1.jpg" alt="Пятёрочка" class="card-img" />
+            <div class="card-text">
+              <p>
+                «Его Сиятельство изволит трудиться провизором в продуктовой
+                лавке. А по версии шута - крепостным в сфере обслуживания,
+                который сам себе амбарная книга (. ❛ ᴗ ❛.). Знает всё лицо
+                товара! Особенно крепкий алкоголь (хотя сам не пьёт, ибо обет
+                трезвости дал). Может проконсультировать крепостных по акциям.»
+              </p>
+            </div>
+          </div>
+
+          <!-- Карточка 3: Геральдика -->
+          <div class="card">
+            <img src="img/rat.png" alt="Крыса" class="card-img" />
+            <div class="card-text">
+              <p>
+                «Граф настаивал на Шереметьеве или Юсупове. Шут настаивает на
+                Мышкине. Спор длится до сих пор. Побеждает Мышкин, потому что у
+                Шута есть сила мема ᕙ⁠(⁠ ͡⁠◉⁠ ͜⁠ ⁠ʖ⁠ ͡⁠◉⁠)⁠ᕗ»
+              </p>
+            </div>
+          </div>
+          
+          <!-- Карточка 5: Драка -->
+          <div class="card">
+            <img src="img/kus.png" alt="Кусь" class="card-img" />
+            <div class="card-text">
+              <p>
+                «Шут: "Мне продолжать драться?" Граф: "Пробуй". Драка
+                продолжается прямо на этой странице, уворачивайтесь!»
+              </p>
+            </div>
+          </div>
+
+          <!-- Новая карточка: Про слежку -->
+          <div class="card">
+            <img src="img/gallery3.jpg" alt="Слежка" class="card-img" />
+            <div class="card-text">
+              <p>«Ты думал я, бть, не полезу в твой профиль ради этого 😈»</p>
+            </div>
+          </div>
+
+          <!-- Новая карточка: Просто фото -->
+          <div class="card">
+            <img
+              src="img/gallery4.jpg"
+              alt="Естественная среда"
+              class="card-img"
+            />
+            <div class="card-text">
+              <p>
+                «Его Сиятельство в естественной среде обитания. Прошу не
+                беспокоить по пустякам.»
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Кнопки управления каруселью -->
+        <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
+      </div>
+
+      <!-- Кнопка прощения -->
+      <div class="forgive-container">
+        <button id="forgive-btn">Ладно, прощаю</button>
+      </div>
+    </div>
+
+    <!-- Слой для летающих стикеров и сердечек -->
+    <div id="physics-layer"></div>
+
+    <audio id="bg-music" loop>
+      <source
+        src="audio/KHil_JEduard_-_Trololo_3488.mp3"
+      />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>

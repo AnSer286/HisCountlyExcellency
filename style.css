@@ -1,0 +1,280 @@
+/* Цветовая палитра: Джанк-фуд оранжевый + Lays Yellow */
+:root {
+    --lays-orange: #FF8C00;
+    --lays-yellow: #FFD700;
+    --dark-orange: #D2691E;
+    --text-dark: #331A00;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    font-family: 'Comic Neue', cursive, sans-serif;
+    background-color: var(--lays-orange);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Узор из символов в стиле ВК (разные размеры) */
+.bg-vk-pattern {
+    background-image: 
+        radial-gradient(var(--lays-yellow) 15%, transparent 16%),
+        radial-gradient(var(--dark-orange) 10%, transparent 11%),
+        radial-gradient(rgba(255, 215, 0, 0.4) 20%, transparent 21%);
+    background-size: 80px 80px, 50px 50px, 120px 120px;
+    background-position: 0 0, 25px 25px, 40px 10px;
+}
+
+.hidden { display: none !important; }
+
+/* --- Экран приветствия (с плавным уходом) --- */
+#splash-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--dark-orange);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    text-align: center;
+    transition: opacity 0.9s ease;
+}
+#splash-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Основной контент: плавное появление */
+#main-content {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+#main-content.visible {
+    opacity: 1;
+}
+
+.splash-content {
+    background: var(--lays-yellow);
+    padding: 40px;
+    border-radius: 20px;
+    border: 8px solid var(--text-dark);
+    box-shadow: 10px 10px 0 rgba(0,0,0,0.3);
+    transform: rotate(-2deg);
+}
+
+.splash-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--dark-orange);
+}
+
+#start-btn {
+    font-family: 'Comic Neue', cursive;
+    font-size: 2rem;
+    padding: 15px 40px;
+    margin-top: 20px;
+    background: var(--lays-orange);
+    color: white;
+    border: 4px solid var(--text-dark);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    box-shadow: 4px 4px 0 var(--text-dark);
+}
+
+#start-btn:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--text-dark);
+}
+
+/* --- Заголовок --- */
+.header {
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.gold-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--lays-yellow);
+    text-shadow: 3px 3px 0 var(--text-dark), -1px -1px 0 var(--text-dark), 1px -1px 0 var(--text-dark), -1px 1px 0 var(--text-dark), 1px 1px 0 var(--text-dark);
+}
+
+.sticker-overlay {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-25deg) scale(2.5);
+    opacity: 0;
+    background: #fff;
+    padding: 5px 20px;
+    font-size: 3rem;
+    font-family: 'Comic Neue', cursive;
+    color: #333;
+    border: 3px solid #333;
+    box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+                opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.sticker-overlay.slapped {
+    opacity: 1;
+    transform: translateX(-50%) rotate(-10deg) scale(1);
+}
+
+/* --- Карусель --- */
+.carousel-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card {
+    min-width: 100%;
+    background: #fff;
+    border: 6px solid var(--text-dark);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 8px 8px 0 var(--lays-yellow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-img {
+    max-height: 400px;
+    max-width: 100%;
+    object-fit: contain;
+    border: 3px solid var(--text-dark);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--lays-yellow);
+    border: 4px solid var(--text-dark);
+    color: var(--text-dark);
+    font-size: 2rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+.nav-btn.prev { left: 10px; }
+.nav-btn.next { right: 10px; }
+
+/* --- Финал --- */
+.forgive-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#forgive-btn {
+    font-family: 'Comic Neue', cursive;
+    font-size: 2rem;
+    padding: 15px 40px;
+    background: var(--lays-yellow);
+    border: 5px solid var(--text-dark);
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 0 var(--text-dark);
+    transition: all 0.1s;
+}
+
+#forgive-btn:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 var(--text-dark);
+}
+
+/* --- Убегающие кнопки --- */
+.escape-btn {
+    position: fixed;
+    top: 20px;
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 3px solid var(--text-dark);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+    transition: top 0.2s, left 0.2s;
+    box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+#close-btn { right: 20px; }
+#mute-btn { right: 90px; }
+
+/* --- Физика (Летающие элементы) --- */
+#physics-layer {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 500;
+}
+
+.floating-sticker {
+    position: absolute;
+    width: 100px;
+    height: auto;
+    pointer-events: auto;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s, transform 0.1s;
+}
+.floating-sticker:hover {
+    opacity: 0.9;
+}
+
+.floating-sticker:active {
+    transform: scale(0.8);
+}
+
+.floating-sticker.dying {
+    opacity: 0 !important;
+    transform: scale(0.5) rotate(180deg) !important;
+    transition: all 0.6s ease-in !important;
+    pointer-events: none;
+}
+
+.flying-heart {
+    position: absolute;
+    font-size: 3rem;
+    animation: floatUp 2s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-200px) scale(2); opacity: 0; }
+}
