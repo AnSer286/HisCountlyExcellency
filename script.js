@@ -80,6 +80,36 @@ function resetAutoSlide() {
   startAutoSlide();
 }
 
+// --- Свайпы для карусели (Мобилки) ---
+let touchStartX = 0;
+let touchEndX = 0;
+
+carousel.addEventListener(
+  "touchstart",
+  (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  },
+  { passive: true },
+);
+
+carousel.addEventListener(
+  "touchend",
+  (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  },
+  { passive: true },
+);
+
+function handleSwipe() {
+  const threshold = 50; // Минимальная длина свайпа
+  if (touchStartX - touchEndX > threshold) {
+    moveSlide(1); // Свайп влево (следующий слайд)
+  } else if (touchEndX - touchStartX > threshold) {
+    moveSlide(-1); // Свайп вправо (предыдущий слайд)
+  }
+}
+
 // --- 3. Убегающие кнопки ---
 const escapeBtns = document.querySelectorAll(".escape-btn");
 let dodgeCounts = { "close-btn": 0, "mute-btn": 0 };
