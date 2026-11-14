@@ -349,7 +349,7 @@ body {
 
   /* 2. ПРЯЧЕМ КНОПКИ КАРУСЕЛИ */
   .nav-btn {
-    display: none !important; /* Убираем стрелки, оставляем только свайпы */
+    display: none; /* Убираем стрелки, оставляем только свайпы */
   }
 
   /* Остальные элементы (заголовок, карточки, стикеры) */
@@ -374,7 +374,7 @@ body {
   }
   .card-img {
     max-height: 250px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
   }
   .card-text {
     font-size: 1.1rem;
